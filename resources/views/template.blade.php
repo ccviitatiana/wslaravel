@@ -17,6 +17,9 @@
                 <a href="{{ route('home') }}">
                     <img class="h-12" src="{{ asset('build/assets/logo.png') }}" alt="logo">
                 </a>
+                <form action="">
+                    <input class="rounded" type="text" placeholder="Search...">
+                </form>
             </div>
             <p>
                 <a href="{{ route('home') }}">Home</a>
@@ -26,7 +29,7 @@
                     <a href="{{ route('login') }}">Login</a>
                 @endauth
             </p>
-            <form action="" placeholder="Search..."></form>
+            
         </header>
     </div>
 
