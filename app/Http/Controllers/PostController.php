@@ -25,7 +25,7 @@ class PostController extends Controller
     {
     	$request->validate([
     		'title' => 'required',
-    		'slug'  => 'required|unique:posts,slug',
+    		'slug'  => 'required|unique:posts,slug' . post->id,
     		'body'  => 'required',
     	]);
 

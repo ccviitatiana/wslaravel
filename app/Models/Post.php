@@ -14,4 +14,10 @@ class Post extends Model
         'body',
         'slug',
     ];
+
+    public function user()
+    {
+    	return $this->belongsTo(User::class);
+    }
+
 }
