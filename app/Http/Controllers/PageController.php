@@ -11,14 +11,8 @@ class PageController extends Controller
 {
     public function home()
     {
-        return view('home');
-    }
-
-    public function blog()
-    {
-        $posts = Post::get();
-        $password = User::get('password');
-        return view('blog', ['posts' => $posts, 'password' => $password]);
+        $posts = Post::latest()->paginate();
+        return view('home', ['posts' => $posts]);
     }
 
     public function post(Post $post)

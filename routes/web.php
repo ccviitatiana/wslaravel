@@ -7,8 +7,6 @@ use Illuminate\Support\Facades\Route;
 Route::controller(PageController::class)->group(function() {
     Route::get('/','home')->name('home');
 
-    Route::get('blog','blog')->name('blog');
-
     Route::get('blog/{post:id}', 'post')->name('post');
 
 });
