@@ -11,8 +11,8 @@ class PageController extends Controller
 {
     public function home()
     {
-        $posts = Post::latest()->paginate();
-        return view('home', ['posts' => $posts]);
+        $posts = Post::latest()->simplePaginate();
+        return view('home', compact('posts'));
     }
 
     public function post(Post $post)

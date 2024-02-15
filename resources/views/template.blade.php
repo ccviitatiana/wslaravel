@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <div class="container px-4 mx-auto">
+    <div class="container pt-2 px-4 mx-auto mb-8">
         <header class="flex justify-between items-center py-4">
             <div class="flex items-center flex-grow gap-4">
                 <a href="{{ route('home') }}">
@@ -34,14 +34,7 @@
             </p>
 
         </header>
-        <div class="opacity-68 h-px mb-8"
-            style="background: linear-gradient(to right,
-        rgba(200,200,200,0) 0%,
-        rgba(200,200,200,1) 30%,
-        rgba(200,200,200,1) 70%,
-        rgba(200,200,200,0) 100%,
-        );">
-        </div>
+
     </div>
 
     @yield('content')
