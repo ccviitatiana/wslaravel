@@ -19,8 +19,15 @@ export default {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
             backgroundImage: {
-                'main-bg':  "url({{ asset('build/assets/main-bg.png') }})",
+                'main-bg': "url({{ asset('build/assets/main-bg.png') }})",
                 'footer-texture': "url('/img/footer-texture.png')",
+            },
+            borderWidth: {
+                DEFAULT: '1px',
+                '1.5': '1.5px',
+            },
+            fontFamily: {
+                'cabin': ['"Cabin"'],
             },
         },
     },
