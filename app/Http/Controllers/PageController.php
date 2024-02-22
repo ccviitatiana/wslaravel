@@ -3,16 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+
+use App\Models\Image;
 use App\Models\User;
 
 use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
-    public function home()
+    public function home(Request $request)
     {
-        $posts = Post::latest()->simplePaginate();
-        return view('home', compact('posts'));
+        $images = Image::all();
+        $search = $request->search;
+        $posts = Post::where('title', 'LIKE', "%{$search}%")->with('user')->latest()->paginate();
+        return view('home', compact('posts', 'images'));
     }
 
     public function post(Post $post)

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\User;
 use App\Models\Post;
 use Illuminate\Support\Str;
 
@@ -18,14 +19,15 @@ class PostController extends Controller
 
     public function create(Post $post) 
     {
-        return view('posts.create', compact('post'));
+        $id = User::all();
+        return view('posts.create', compact('post'))->with('id', $id);
     }
 
     public function store(Request $request) 
     {
     	$request->validate([
-    		'title' => 'required',
-    		'slug'  => 'required|unique:posts,slug' . post->id,
+            'title' => 'required',
+    		'slug'  => 'required|unique:posts,slug',
     		'body'  => 'required',
     	]);
 
@@ -35,7 +37,7 @@ class PostController extends Controller
             'body'  => $request->body,
         ]);
 
-        return redirect()->route('posts.edit', $post);
+        return redirect()->route('posts.index', $post);
     }
 
     public function edit(Post $post) 
@@ -46,8 +48,8 @@ class PostController extends Controller
     public function update(Request $request, Post $post)
     {
     	$request->validate([
-    		'title' => 'required',
-    		'slug'  => 'required|unique:posts,slug,' . $post->id,
+            'title' => 'required',
+    		'slug'  => 'required|unique:posts,slug' . $post->id,
     		'body'  => 'required',
     	]);
 
@@ -56,8 +58,7 @@ class PostController extends Controller
             'slug'  => $request->slug,
             'body'  => $request->body,
         ]);
-
-        return redirect()->route('posts.edit', $post);
+        return redirect()->route('posts.index', $post);
     }
 
     public function destroy(Post $post) 

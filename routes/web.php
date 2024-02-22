@@ -1,4 +1,6 @@
 <?php
+
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PostController;
@@ -7,13 +9,16 @@ use Illuminate\Support\Facades\Route;
 Route::controller(PageController::class)->group(function() {
     Route::get('/','home')->name('home');
 
-    Route::get('blog/{post:id}', 'post')->name('post');
-
+    Route::get('/blog/{post:slug}', 'post')->name('post');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/create', [ImageController::class, 'create']);
+Route::post('/create', [ImageController::class, 'store']);
+
+
+Route::get('/posts', function () {
+    return view('posts.index');
+})->middleware(['auth', 'verified'])->name('posts');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
