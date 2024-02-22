@@ -15,7 +15,7 @@ class PageController extends Controller
     {
         $images = Image::all();
         $search = $request->search;
-        $posts = Post::where('title', 'LIKE', "%{$search}%")->with('user')->latest()->paginate();
+        $posts = Post::where('title','LIKE', "%{$search}%")->latest()->paginate();
         return view('home', compact('posts', 'images'));
     }
 

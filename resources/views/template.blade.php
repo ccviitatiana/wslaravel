@@ -27,7 +27,7 @@
                         <button class="rounded-lg"> /</button>
                     </span>
                     <input id="input_main" class="border-none focus:ring-0 rounded-lg
-                        " type="text" placeholder="Search...">
+                        " type="text" name="search" placeholder="Search...">
                     <script>
                         var input = document.getElementById('input_main');
                         $(document).on('keydown', function(e) {

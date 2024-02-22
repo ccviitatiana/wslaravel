@@ -16,10 +16,9 @@
 
 <form method="POST" action="" enctype="multipart/form-data">
     <input type="file" name="image">
-    <input type="submit" name="upload">
-</form>
 
-<div class="flex justify-between items-center">
-    <a href="{{ route('posts.index') }}" class="text-gray-100">Volver</a>
-    <input type="submit" value="Enviar" class="bg-gray-800 text-white rounded px-4 py-2">
-</div>
+    <div class="flex justify-between items-center">
+        <a href="{{ route('posts.index') }}" class="text-gray-100">Volver</a>
+        <input type="submit" value="Enviar" class="bg-gray-800 text-white rounded px-4 py-2">
+    </div>
+</form>

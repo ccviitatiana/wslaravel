@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\Image;
 use App\Models\User;
 use App\Models\Post;
 use Illuminate\Support\Str;
@@ -20,11 +21,12 @@ class PostController extends Controller
     public function create(Post $post) 
     {
         $id = User::all();
-        return view('posts.create', compact('post'))->with('id', $id);
+        $images = Image::with('images')->get();
+        return view('posts.create', compact('post', 'images'))->with('id', $id);
     }
 
     public function store(Request $request) 
-    {
+    { 
     	$request->validate([
             'title' => 'required',
     		'slug'  => 'required|unique:posts,slug',
@@ -36,7 +38,6 @@ class PostController extends Controller
             'slug'  => $request->slug,
             'body'  => $request->body,
         ]);
-
         return redirect()->route('posts.index', $post);
     }
 

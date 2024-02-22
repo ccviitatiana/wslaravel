@@ -11,9 +11,9 @@ class ImageController extends Controller
 {
     public function create()
     {
-        $images = Image::all();
+        $images = Image::with('images')->get();
         $id = User::all();
-        return view('posts._form', compact('images'))->with('id', $id);
+        return view('posts.create', compact('images'))->with('id', $id);
     }
 
     public function store(Request $request)
@@ -32,5 +32,10 @@ class ImageController extends Controller
         $images->exte = $exte;
         $images->save();
         return redirect()->back();
+    }
+
+    public function edit(Image $image) 
+    {
+        return view('posts.edit', compact('image'));
     }
 }
