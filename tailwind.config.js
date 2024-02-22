@@ -29,6 +29,9 @@ export default {
             fontFamily: {
                 'cabin': ['"Cabin"'],
             },
+            fontSize: {
+                vmax: ['30px', '20px'],
+              }
         },
     },
 

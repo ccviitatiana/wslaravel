@@ -15,7 +15,7 @@
     <title>kittens</title>
 </head>
 
-<body class="font-cabin">
+<body class="font-cabin" >
     <div class="container pt-2 px-4 mx-auto mb-8">
         <header class="flex justify-between items-center py-4">
             <div class="mx-2 flex items-center flex-grow gap-4">
