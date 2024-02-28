@@ -13,8 +13,11 @@ class PostController extends Controller
 {
     public function index() 
     {
+        $auth = Auth::user();
+
     	return view('posts.index', [
-            'posts' => Post::latest()->paginate()
+            'posts' => Post::latest()->paginate(),
+            'images' => Post::select('image_path')->where('user_id', $auth->id)->get()
         ]);
     }
 
@@ -47,7 +50,7 @@ class PostController extends Controller
         $post->title = $request->title;
         $post->slug = $request->slug;
         $post->body = $request->body;
-        $post->image_name = $NewImageName;
+        $post->image_name = $NewImageName; 
         $post->image_path = $NewImageName;
 
         $post->save();  
@@ -63,7 +66,7 @@ class PostController extends Controller
     {
     	$request->validate([
             'title' => 'required',
-    		'slug'  => 'required|unique:posts,slug',
+    		'slug'  => 'required|unique:posts,slug,' . $post->id,
     		'body'  => 'required',
             // 'image' => 'required|mimes:jpg,png,jpeg|max:5048',
     	]);
@@ -81,6 +84,7 @@ class PostController extends Controller
     {
         $post->delete();
 
+        $image = public_path('images') . $post->image_path;
         return back();
     }
 }
