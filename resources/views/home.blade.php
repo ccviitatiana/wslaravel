@@ -18,13 +18,7 @@
                 <span>{{ $post->created_at->format('d/m/Y') }}</span>
             </p>
             <h2 class="text-lg text-gray-900 mt-2">{{ $post->title }}</h2>
-            <ul>
-                @foreach ($images as $image)
-                <li>{{ $image->name }}
-                    <img src="{{ asset('images/'.$image->name) }}" alt="" title="" />
-                </li>
-                @endforeach
-            </ul>
+            <img src="{{ asset('images' . $post->image_path) }}" alt="">
 
         </a>
         @endforeach

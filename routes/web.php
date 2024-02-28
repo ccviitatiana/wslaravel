@@ -12,8 +12,8 @@ Route::controller(PageController::class)->group(function () {
     Route::get('blog/{post:slug}', 'post')->name('post');
 });
 
-Route::get('/create', [ImageController::class, 'create']);
-Route::post('/create', [ImageController::class, 'store']);
+// Route::get('/create', [ImageController::class, 'create']);
+// Route::post('/create', [ImageController::class, 'store']);
 
 
 Route::get('/posts', function () {
@@ -28,6 +28,5 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::resource('posts', PostController::class)->except('show');
-
 
 require __DIR__ . '/auth.php';

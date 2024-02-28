@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Models\Image;
+use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Post;
 use Illuminate\Support\Str;
@@ -21,8 +21,7 @@ class PostController extends Controller
     public function create(Post $post) 
     {
         $id = User::all();
-        $images = Image::with('images')->get();
-        return view('posts.create', compact('post', 'images'))->with('id', $id);
+        return view('posts.create', compact('post'))->with('id', $id);
     }
 
     public function store(Request $request) 
@@ -31,14 +30,28 @@ class PostController extends Controller
             'title' => 'required',
     		'slug'  => 'required|unique:posts,slug',
     		'body'  => 'required',
+            'image' => 'required|mimes:jpg,png,jpeg|max:5048',
     	]);
 
-        $post = $request->user()->posts()->create([
-            'title' => $request->title,
-            'slug'  => $request->slug,
-            'body'  => $request->body,
-        ]);
-        return redirect()->route('posts.index', $post);
+        $post = new Post();
+        $auth = Auth::user();
+
+        $ImageName = $request->file('image')->getClientOriginalName();
+        // $ImageExte = $request->file('image')->getClientOriginalExtension();
+        $NewImageName = time() . '-' . $ImageName;
+
+        request()->file('image')->move(public_path('images'), $NewImageName);
+
+        // $post->id = $request->create(Post::class)->id;
+        $post->user_id = $auth->id;
+        $post->title = $request->title;
+        $post->slug = $request->slug;
+        $post->body = $request->body;
+        $post->image_name = $NewImageName;
+        $post->image_path = $NewImageName;
+
+        $post->save();  
+        return redirect()->route('posts.index');
     }
 
     public function edit(Post $post) 
@@ -50,14 +63,16 @@ class PostController extends Controller
     {
     	$request->validate([
             'title' => 'required',
-    		'slug'  => 'required|unique:posts,slug' . $post->id,
+    		'slug'  => 'required|unique:posts,slug',
     		'body'  => 'required',
+            // 'image' => 'required|mimes:jpg,png,jpeg|max:5048',
     	]);
 
         $post->update([
             'title' => $request->title,
             'slug'  => $request->slug,
             'body'  => $request->body,
+            'path' => $request->path,
         ]);
         return redirect()->route('posts.index', $post);
     }

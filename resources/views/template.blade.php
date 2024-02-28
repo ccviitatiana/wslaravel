@@ -48,10 +48,7 @@
             </p>
 
         </header>
-
     </div>
-
-
     @yield('content')
 </body>
 

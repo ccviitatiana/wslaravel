@@ -1,4 +1,5 @@
 @csrf
+
 <label class="uppercase text-white-900 text-xs">Título</label>
 <span class="text-xs text-red-600">@error('title') {{ $message }}
     @enderror</span>
@@ -14,11 +15,11 @@
     @enderror</span>
 <input type="text" name="body" class="rounded bg-gray-100 border-gray-800 w-full mb-4" value="{{ old('body',@$post->body) }}">
 
-<form method="POST" action="" enctype="multipart/form-data">
-    <input type="file" name="image">
+<!-- <form method="POST" action="" enctype="multipart/form-data"> -->
+<input type="file" name="image">
 
-    <div class="flex justify-between items-center">
-        <a href="{{ route('posts.index') }}" class="text-gray-100">Volver</a>
-        <input type="submit" value="Enviar" class="bg-gray-800 text-white rounded px-4 py-2">
-    </div>
-</form>
+<div class="flex justify-between items-center">
+    <a href="{{ route('posts.index') }}" class="text-gray-100">Volver</a>
+    <input type="submit" value="Enviar" class="bg-gray-800 text-white rounded px-4 py-2">
+</div>
+<!-- </form> -->

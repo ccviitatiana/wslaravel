@@ -13,6 +13,8 @@ class Post extends Model
         'title',
         'body',
         'slug',
+        'image_name',
+        'image_path'
     ];
 
     public function user()
