@@ -15,10 +15,12 @@ class PageController extends Controller
         $auth = Auth::user();
 
         $search = $request->search;
-        $posts = Post::where('title','LIKE', "%{$search}%")->latest()->paginate();
-        $images = Post::select('image_path')->where('user_id', $auth->id)->get();
+        $posts = Post::where('title', 'LIKE', "%{$search}%")->latest()->paginate();
+        // $images = Post::select('image_path')
+        // ->get();
 
-        return view('home', compact('posts', 'images'));
+        // ->where('user_id', $auth->id)
+        return view('home', compact('posts'));
     }
 
     public function post(Post $post)
@@ -26,4 +28,3 @@ class PageController extends Controller
         return view('post', compact('post'));
     }
 }
-
