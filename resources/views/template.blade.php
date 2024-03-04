@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <link rel="icon" href="{{ asset('build/assets/logo.png') }}">
+    <link rel="icon" href="{{ asset('public/logo.png') }}">
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,7 +20,7 @@
         <header class="flex justify-between items-center py-4">
             <div class="mx-2 flex items-center flex-grow gap-4">
                 <a class="" href="{{ route('home') }}">
-                    <img class="h-12" src="{{ asset('build/assets/logo.png') }}" alt="logo">
+                    <img class="h-12" src="{{ URL( '/images/icon.png' ) }}" alt="logo">
                 </a>
                 <form class="border-gray-600 border-1.5 rounded-lg" action="">
                     <span class="ml-2 pr-2 pl-3 py-1 rounded-lg bg-gray-300 ">
@@ -38,7 +38,7 @@
                     </script>
                 </form>
             </div>
-            <p>
+            <p class="flex gap-3 mr-5">
                 <a href="{{ route('home') }}">Home</a>
                 @auth
                 <a href="{{ route('posts.index') }}">Dashboard</a>

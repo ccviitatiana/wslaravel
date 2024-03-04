@@ -45,6 +45,7 @@ class PostController extends Controller
             'body'  => 'required',
             // 'image' => 'required|mimes:jpg,png,jpeg|max:5048',
         ]);
+
         
         if($request->hasfile('image') != '') {  
             $image_path = $this->storeImages($request);
