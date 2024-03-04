@@ -20,7 +20,7 @@
         <header class="flex justify-between items-center py-4">
             <div class="mx-2 flex items-center flex-grow gap-4">
                 <a class="" href="{{ route('home') }}">
-                    <img class="h-12" src="{{ URL( '/images/icon.png' ) }}" alt="logo">
+                    <img class="h-12" src="{{ URL( '/cat.png' ) }}" alt="logo">
                 </a>
                 <form class="border-gray-600 border-1.5 rounded-lg" action="">
                     <span class="ml-2 pr-2 pl-3 py-1 rounded-lg bg-gray-300 ">
