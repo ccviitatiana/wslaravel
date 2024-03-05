@@ -31,7 +31,7 @@ export default {
             },
             fontSize: {
                 vmax: ['30px', '20px'],
-              }
+            }
         },
     },
 

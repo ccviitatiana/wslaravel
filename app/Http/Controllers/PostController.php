@@ -12,7 +12,6 @@ use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
-
     public function storeImages($request)
     {
         $ImageName = $request->file('image')->getClientOriginalName();
@@ -97,11 +96,12 @@ class PostController extends Controller
         if (File::exists($image)) {
             File::delete($image);
         } 
-        $post->delete();
+        $post->delete();  
 
         return back();
     }
-    public function reaction() {
-        
-    }
+    // public function reaction() { 
+    //     $imgsrc = $('#reaction').attr('src');
+
+    // }
 }
