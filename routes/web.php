@@ -11,12 +11,9 @@ Route::controller(PageController::class)->group(function () {
     Route::get('blog/{post:slug}', 'post')->name('post');
 });
 
-// Route::get('/create', [ImageController::class, 'create']);
-// Route::post('/create', [ImageController::class, 'store']);
-
-
 Route::get('/posts', function () {
     return view('posts.index');
+    
 })->middleware(['auth', 'verified'])->name('posts');
 
 

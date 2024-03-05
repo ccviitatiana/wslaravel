@@ -23,7 +23,7 @@
                     <img class="h-12" src="{{ URL( '/cat.png' ) }}" alt="logo">
                 </a>
                 <form class="border-gray-600 border-1.5 rounded-lg" action="">
-                    <span class="ml-2 pr-2 pl-3 py-1 rounded-lg bg-gray-300 ">
+                    <span class="ml-2 pr-2 pl-3 py-1 rounded-lg bg-gray-200 ">
                         <button class="rounded-lg"> /</button>
                     </span>
                     <input id="input_main" class="border-none focus:ring-0 rounded-lg
@@ -32,6 +32,7 @@
                         var input = document.getElementById('input_main');
                         $(document).on('keydown', function(e) {
                             if (e.keyCode === 111) { 
+                                e.preventDefault();
                                 input.focus();
                             }
                         });
