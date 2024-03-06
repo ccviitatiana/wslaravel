@@ -24,14 +24,16 @@
                     </div>
                 </a>
                 <div class="bg-gray-200 rounded-b-lg flex items-center grow-2 justify-between flex-grow gap-8 bg-gray-200 px-6 pb-4 w-full">
-                    <img id="reaction" onclick="reaction" src="{{ URL( '/reaction-off.png' ) }}" class="ml-7 size-6" alt="">
+                    <img id="reaction" onclick="reaction" active="" src="{{ URL( '/reaction-off.png' ) }}" class="ml-7 size-6" alt="">
                     <script>
                         const img = document.getElementById('reaction');
                         let toggle = true;
                         img.addEventListener('click', function() {
                             toggle = !toggle;
                             if(toggle) {
-                                img.src =
+                                img.src = url('/images/reaction-on');
+                            } else {
+                                img.src = url('/images/reaction-off');
                             }
                         })
                     </script>
