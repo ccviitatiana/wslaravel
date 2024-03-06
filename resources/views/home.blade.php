@@ -23,24 +23,24 @@
                         <img src="{{ url('images/' . $post->image_path) }}" alt="">
                     </div>
                 </a>
-                <div class="bg-gray-200 rounded-b-lg flex items-center grow-2 justify-between flex-grow gap-8 bg-gray-200 px-6 pb-4 w-full">
-                    <img id="reaction" onclick="reaction" active="" src="{{ URL( '/reaction-off.png' ) }}" class="ml-7 size-6" alt="">
-                    <script>
-                        const img = document.getElementById('reaction');
-                        let toggle = true;
-                        img.addEventListener('click', function() {
-                            toggle = !toggle;
-                            if(toggle) {
-                                img.src = url('/images/reaction-on');
-                            } else {
-                                img.src = url('/images/reaction-off');
-                            }
-                        })
-                    </script>
+                <div id="content_reaction" class="bg-gray-200 rounded-b-lg flex items-center grow-2 justify-between flex-grow gap-8 bg-gray-200 px-6 pb-4 w-full">
+                    <img name="reaction" id="{{ $post->id }}" src="{{ URL( '/reaction-on.png' ) }}" class="ml-7 size-6" alt="">
+
                     <input class="border-none focus:ring-0 rounded-lg w-[420px]" type="text" placeholder="Comment...">
                 </div>
             </div>
             @endforeach
+            <script>
+                reaction = document.getElementsByName("reaction");
+                let toggle = true;
+                $(reaction).on("click", function() {
+                    if (!toggle) {
+                        reaction.setAttribute("src","{{ URL( '/reaction-on.png' ) }}")
+                    } else {
+                        alert("aaaaa")
+                    }
+                });
+            </script>
         </div>
         {{ $posts->links() }}
 
